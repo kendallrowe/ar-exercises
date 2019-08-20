@@ -6,5 +6,13 @@ class Employee < ActiveRecord::Base
                                           greater_than_or_equal_to: 40,
                                           less_than_or_equal_to: 200
                                         }
+  before_create :create_password
+
+  private  
+  
+  def create_password
+    o = [('a'..'z'), ('A'..'Z'), (1..9)].map(&:to_a).flatten
+    self.password = (0...8).map { o[rand(o.length)] }.join
+  end
 end
  
