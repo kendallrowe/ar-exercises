@@ -9,3 +9,6 @@ require_relative './exercise_6'
 puts "Exercise 7"
 puts "----------"
 
+user_input = "Please enter name of store to create: #{gets.chomp}"
+@storeX = Store.create( name: user_input )
+@storeX.errors.messages.each { |m| puts m }
